@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe0ed">
+<title>Happiest Birthday Wifey 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe0ed, #f5d9ff, #fff0f5);
+    color: #793c68;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 21px;
+    margin: 8px 4px;
+    background: linear-gradient(45deg, #ff65a3, #d783f4);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #d36ba755;
+    transition: transform .25s, box-shadow .25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px #d36ba777;
+}
+
+button:focus-visible {
+    outline: 3px solid #a84383;
+    outline-offset: 4px;
+}
+
+.hero {
+    min-height: 100vh;
+    padding: 35px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 35px 22px;
+    background: rgba(255,255,255,.8);
+    border: 2px solid white;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px #d98bb855;
+    animation: appear 1s ease;
+}
+
+.stickers {
+    font-size: clamp(27px, 5vw, 42px);
+    margin: 10px 0 20px;
+    animation: bounce 2s infinite;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(35px, 8vw, 60px);
+    line-height: 1.4;
+    color: #f05296;
+    text-shadow: 2px 3px white;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 2;
+    margin: 15px 0 22px;
+}
+
+.section {
+    padding: 30px 0 10px;
+    margin-top: 25px;
+    border-top: 1px dashed #efa6cf;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(23px, 5vw, 30px);
+    color: #e94f94;
+    margin-bottom: 16px;
+}
+
+.poem {
+    background: #fff0f7;
+    border-radius: 22px;
+    padding: 22px 12px;
+    line-height: 2.15;
+    font-size: 14px;
+    box-shadow: inset 0 0 15px #f7c9e4;
+}
+
+.music-player {
+    margin: 25px auto;
+    padding: 22px 12px;
+    background: linear-gradient(135deg, #ffe5f0, #f1ddff);
+    border: 2px solid white;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px #e7a0cb44;
+}
+
+.music-icon {
+    font-size: 40px;
+    animation: bounce 2s infinite;
+}
+
+.music-player p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+#musicStatus {
+    margin-top: 8px;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.photo-card {
+    background: #fff0f7;
+    border: 2px solid white;
+    border-radius: 18px;
+    padding: 7px;
+    box-shadow: 0 6px 18px #e9a2ca55;
+    transition: transform .3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px) rotate(-2deg);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f9d7e9;
+}
+
+.photo-card p {
+    font-size: 11px;
+    padding: 9px 2px 4px;
+    font-weight: 600;
+}
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.gift {
+    background: #fff0f8;
+    border: 2px solid #ffc0df;
+    border-radius: 20px;
+    padding: 15px 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.gift:hover {
+    transform: translateY(-6px) rotate(-2deg);
+    background: #ffe0ef;
+}
+
+.gift-icon {
+    display: block;
+    font-size: 39px;
+    margin-bottom: 8px;
+    animation: wiggle 2s infinite;
+}
+
+.gift p {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.message, #surprise {
+    display: none;
+    background: #fff0f7;
+    border: 2px dashed #f49ac5;
+    padding: 22px 14px;
+    border-radius: 20px;
+    margin-top: 20px;
+    line-height: 1.9;
+}
+
+.message.show, #surprise.show {
+    display: block;
+    animation: appear .5s ease;
+}
+
+.message h3 {
+    color: #e94f94;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.final-note {
+    font-family: 'Pacifico', cursive;
+    font-size: 21px;
+    color: #e94f94;
+    margin-top: 20px;
+    line-height: 1.9;
+}
+
+footer {
+    padding: 25px 5px 5px;
+    font-size: 11px;
+    line-height: 2;
+    color: #a65c8a;
+}
+
+.floating {
+    position: fixed;
+    bottom: -45px;
+    pointer-events: none;
+    z-index: 5;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-6deg); }
+    75% { transform: rotate(6deg); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 12px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gift-grid {
+        gap: 5px;
+    }
+
+    .gift {
+        padding: 12px 3px;
+    }
+
+    .gift-icon {
+        font-size: 32px;
+    }
+
+    .poem {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="hero">
+<div class="container">
+
+    <div class="stickers">🎀 🧸 💗 🎂 💌</div>
+
+    <h1>Happy Birthday,<br>Wifey! 💖</h1>
+
+    <p class="subtitle">
+        To someone who makes ordinary moments feel magical... 🌷<br>
+         
+    </p>
+
+    <button onclick="openBirthday()">
+        🎉 Open Your Birthday Surprise
+    </button>
+
+    <!-- MUSIC PLAYER -->
+    <div class="music-player">
+        <div class="music-icon">🎶💗</div>
+        <h2>melody for you</h2>
+        <p>A little melody for your special day 🌷</p>
+
+        <audio id="birthdayMusic" loop preload="metadata">
+            <source src="music/romantic.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="musicButton" onclick="toggleMusic()">
+            ▶ Play Our Song 🎵
+        </button>
+
+        <p id="musicStatus" aria-live="polite">
+            Tap play to start the music 💕
+        </p>
+    </div>
+
+    <!-- BIRTHDAY POEM -->
+    <section class="section" id="birthday">
+        <h2>A Little Poem For You 🌹</h2>
+
+        <div class="poem">
+            On this beautiful day, my wish is for you,<br>
+            A sky full of stars and dreams coming true. ✨<br>
+            May laughter find you wherever you go,<br>
+            And may your heart bloom like flowers that grow. 🌸<br><br>
+
+            If I could gift you the stars up above,<br>
+            I'd wrap every one in a ribbon of love. 🎀<br>
+            And if you ever wonder what makes my days bright,<br>
+            It's the thought of you that makes everything right. 💗<br><br>
+
+            So smile today, my baby girl,<br>
+            You're a little bit magic in this big, wide world. 🦋<br>
+            Happy birthday, Wifey, here's one thing that's true:<br>
+            This little birthday poem was made just for you. 💞
+
+            Yours foverer, Manashhh 💕
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="section" id="memories">
+        <h2>📸💗</h2>
+        <p> 🌷</p>
+
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img src="images/ekta1.jpg"
+                     alt="A beautiful smile ">
+                <p>My favorite smile 🌸</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/ekta2.jpg"
+                     alt="A lovely memory">
+                <p>Tum jesi ho bas wesi hi raho 💕</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/ekta3.jpg"
+                     alt="A precious moment">
+                <p>Meri Pyaari Raadha </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE GIFTS -->
+    <section class="section">
+        <h2>🎁 Your Little Love Gifts 🎁</h2>
+        <p>Choose a gift, Wifey. Each one has a secret message! 🥹</p>
+
+        <div class="gift-grid">
+            <button class="gift" onclick="openGift(0)"
+                    aria-label="Open gift one">
+                <span class="gift-icon">🎁</span>
+                <p>Gift No. 1</p>
+                <p>💗 Love</p>
+            </button>
+
+            <button class="gift" onclick="openGift(1)"
+                    aria-label="Open gift two">
+                <span class="gift-icon">💌</span>
+                <p>Gift No. 2</p>
+                <p>🥺 Miss You</p>
+            </button>
+
+            <button class="gift" onclick="openGift(2)"
+                    aria-label="Open gift three">
+                <span class="gift-icon">🧸</span>
+                <p>Gift No. 3</p>
+                <p>🌷 Promise</p>
+            </button>
+        </div>
+
+        <div class="message" id="giftMessage" aria-live="polite">
+            <h3 id="giftTitle"></h3>
+            <p id="giftText"></p>
+        </div>
+    </section>
+
+    <!-- FINAL SURPRISE -->
+    <section class="section">
+        <h2>One Last Surprise! 🥹💝</h2>
+        <p>There's one more little message waiting for you...</p>
+
+        <button onclick="finalSurprise()">
+            💝 Tap For Your Surprise
+        </button>
+
+        <div id="surprise" aria-live="polite">
+            <div style="font-size:45px">💐💖🧸</div>
+
+            <h2>Dear Wifey,</h2>
+
+            <p>
+                Happy birthday to someone truly special! 🎂<br><br>
+                I hope your day is filled with smiles, sweet memories,
+                lots of laughter, and all the happiness you deserve.<br><br>
+
+                May this new year of your life bring you beautiful
+                surprises, wonderful dreams, and countless reasons
+                to smile. Never stop being the lovely person you are. 🌈
+            </p>
+
+            <div class="final-note">
+                Happy Birthday, Wifey! 💗<br>
+                Sending you lots of love! 🎀
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Made with 💗, a little effort, and lots of birthday magic ✨<br>
+        Especially for You 🎀
+    </footer>
+
+</div>
+</main>
+
+<script>
+const gifts = [
+    {
+        title: "I LOVE YOU! 💗",
+        text: "You make the little moments feel special. If I could put all my affection into one little gift, it would be this: you matter, you are appreciated, and you deserve to feel loved today and every day. 💖🌷"
+    },
+    {
+        title: "I MISS YOU! 🥺💌",
+        text: "Sometimes, even the smallest things remind me of you. Here's a little reminder that you're thought of, missed, and wished the happiest birthday ever. Sending you the biggest virtual dose of happiness! 🧸💕"
+    },
+    {
+        title: "A LITTLE PROMISE 🌸",
+        text: "I'll keep cheering for your dreams, celebrating your wins, and wishing good things for you. May you always have reasons to smile and courage to chase what makes you happy. You deserve beautiful things. 🦋💗"
+    }
+];
+
+function openGift(index) {
+    const message = document.getElementById("giftMessage");
+
+    document.getElementById("giftTitle").textContent =
+        gifts[index].title;
+
+    document.getElementById("giftText").textContent =
+        gifts[index].text;
+
+    message.classList.remove("show");
+    void message.offsetWidth;
+    message.classList.add("show");
+
+    createHearts(12);
+}
+
+function openBirthday() {
+    document.getElementById("birthday").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    createHearts(25);
+}
+
+function finalSurprise() {
+    const surprise = document.getElementById("surprise");
+    surprise.classList.add("show");
+
+    createHearts(35);
+
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+function createHearts(amount) {
+    const stickers = ["💗", "💕", "💖", "🌸", "✨", "🎀"];
+
+    for (let i = 0; i < amount; i++) {
+        const heart = document.createElement("div");
+
+        heart.className = "floating";
+        heart.textContent =
+            stickers[Math.floor(Math.random() * stickers.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 24) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => heart.remove());
+    }
+}
+
+// Romantic music controls
+const birthdayMusic = document.getElementById("birthdayMusic");
+const musicButton = document.getElementById("musicButton");
+const musicStatus = document.getElementById("musicStatus");
+
+async function toggleMusic() {
+    if (birthdayMusic.paused) {
+        try {
+            await birthdayMusic.play();
+
+            musicButton.textContent = "⏸ Pause Our Song 🎵";
+            musicStatus.textContent = "Playing our little melody 💗";
+        } catch (error) {
+            musicStatus.textContent =
+                "Music couldn't start. Check music/romantic.mp3 and try again. 🎶";
+        }
+    } else {
+        birthdayMusic.pause();
+
+        musicButton.textContent = "▶ Play Our Song 🎵";
+        musicStatus.textContent = "Music paused 💕";
+    }
+}
+
+birthdayMusic.addEventListener("error", () => {
+    musicStatus.textContent =
+        "Please add your music file at music/romantic.mp3 🎵";
+});
+
+birthdayMusic.addEventListener("playing", () => {
+    musicButton.textContent = "⏸ Pause Our Song 🎵";
+    musicStatus.textContent = "Playing our little melody 💗";
+});
+
+birthdayMusic.addEventListener("pause", () => {
+    musicButton.textContent = "▶ Play Our Song 🎵";
+});
+
+// Floating decorations
+setInterval(() => createHearts(1), 1200);
+</script>
+
+</body>
+</html>
